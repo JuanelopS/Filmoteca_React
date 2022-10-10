@@ -13,10 +13,10 @@ body {
   height: auto;
   display: grid;
   grid-template-areas: 
-    "header header header header"
-    "nav nav nav nav"
-    "content content content aside"
-    "footer footer footer footer"
+    "header header header header header"
+    "nav nav nav nav nav"
+    "content content content content aside"
+    "footer footer footer footer footer"
   ;
   grid-template-rows: 100px 70px auto 70px;
 }
@@ -28,7 +28,6 @@ body {
   background: white;
   text-align: left;
   font-style: italic;
-
   display: flex;
   justify-content: center;
 }
@@ -89,11 +88,13 @@ body {
   transform: scale(1.1)
 }
 
+/* MENÚ LATERAL */
+
 .aside {
   grid-area: aside;
   background: #f6f7f9;
   border-left: 1px solid #ddd;
-  padding: 20px;
+  padding: 10px;
 }
 
 .aside > div {
@@ -107,7 +108,7 @@ body {
   box-shadow: 0 0 6px #ddd;
 }
 
-.aside input[type="text"], textarea{
+input[type="text"], textarea{
   display: block;
   margin: 0 auto;
   margin-top: 15px;
@@ -121,6 +122,10 @@ body {
   border-color: transparent;
 }
 
+.no-encontrado {
+  color: red;
+}
+
 /* Estilos contenido principal */
 
 .content {
@@ -129,11 +134,12 @@ body {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .item {
   background: white;
-  flex-grow: 1;  /* cada elemento va a compartir un espacio equivalente */
+  /* flex-grow: 1;   cada elemento va a compartir un espacio equivalente */
   border-radius: 10px;
   box-shadow: 0 0 6px #ddd;
   margin: 20px;
@@ -188,7 +194,6 @@ button, input[type="submit"], input[type="button"] {
 @media (max-width: 1085px){
   .content {
     flex-flow: column wrap;
-    align-items: center;
     justify-content: center;
   }
 

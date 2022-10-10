@@ -1,7 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Editar } from './Editar';
+
 
 export const Listado = ({listadoState, setListadoState}) => {
+
+  const [ editar, setEditar ] = useState(0);
   
   useEffect(() => {
     conseguirPeliculas();
@@ -36,10 +40,19 @@ export const Listado = ({listadoState, setListadoState}) => {
             <article key={pelicula.id} className="item">
             <h3 className="title">{pelicula.titulo}</h3>
             <p className="description">{pelicula.descripcion}</p>
-            <button className="edit">Editar</button>
-            <button className="delete" onClick={() => borrarPelicula(pelicula.id)}>Borrar</button>
+            <button className="edit" onClick={ () => setEditar(pelicula.id)}>Editar</button>
+            <button className="delete" onClick={ () => borrarPelicula(pelicula.id) }>Borrar</button>
 
-            {/* aparece el formulario de editar */}
+            {/* aparece el formulario de editar si el estado editar es igual al id de la pelicula clickada*/}
+            {editar === pelicula.id && (
+              <Editar 
+                      pelicula={pelicula} 
+                      conseguirPeliculas={conseguirPeliculas}
+                      setEditar={setEditar}
+                      setListadoState={setListadoState}
+              />
+            )}
+
           </article>
           )})
         : <h2>No hay peliculas para mostrar</h2>

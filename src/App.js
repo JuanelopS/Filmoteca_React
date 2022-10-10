@@ -38,9 +38,11 @@ function App() {
     </section>
 
     <aside className="aside">
-      <Buscador />
+      <Buscador listadoState = { listadoState }
+                setListadoState = { setListadoState }
+      />
 
-      <Crear setListadoState={setListadoState}/>
+      <Crear setListadoState={ setListadoState }/>
     </aside>
 
     {/* <!-- Pie de página --> */}
